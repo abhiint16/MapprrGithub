@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import abhishekint.com.mapprrgithub.app.Home.Model.RepoSearchModel;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenter;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements AdapterViewLayer{
@@ -28,5 +29,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemCount() {
         return 0;
+    }
+
+    @Override
+    public void updateRepoSearchData(RepoSearchModel repoSearchModel) {
+
     }
 }

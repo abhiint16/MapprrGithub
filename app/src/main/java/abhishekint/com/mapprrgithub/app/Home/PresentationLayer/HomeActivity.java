@@ -14,6 +14,7 @@ import abhishekint.com.mapprrgithub.app.Home.Adapter.HomeRecyclerAdapter;
 import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchHit;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenter;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenterImpl;
+import abhishekint.com.mapprrgithub.schedulers.AppSchedulerProvider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -26,6 +27,8 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
     SearchView searchView;
     @Inject
     RepoSearchHit repoSearchHit;
+    @Inject
+    public AppSchedulerProvider appSchedulerProvider;
 
     Unbinder unbinder;
     HomePresenter homePresenter;
@@ -43,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
     }
 
     private void getHomeFeed() {
-        homePresenter.getHomeFeed(homeRecyclerAdapter);
+        homePresenter.getHomeFeed(homeRecyclerAdapter,"google",1,10,"stars","desc");
     }
 
     private void initializeRest() {
@@ -54,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
     }
 
     private void initializePresenter() {
-        homePresenter=new HomePresenterImpl(this,repoSearchHit);
+        homePresenter=new HomePresenterImpl(this,repoSearchHit,appSchedulerProvider);
     }
 
     private void initializeDaggerAndButter() {
