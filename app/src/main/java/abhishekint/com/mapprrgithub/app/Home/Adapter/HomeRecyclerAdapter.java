@@ -1,6 +1,7 @@
 package abhishekint.com.mapprrgithub.app.Home.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import abhishekint.com.mapprrgithub.R;
 import abhishekint.com.mapprrgithub.app.Home.Model.RepoSearchModel;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenter;
+import abhishekint.com.mapprrgithub.app.RepoDetails.RepoDetailActivity;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements AdapterViewLayer {
 
@@ -76,7 +78,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyDataSetChanged();
     }
 
-    public class HomeRepoViewHolder2 extends RecyclerView.ViewHolder {
+    public class HomeRepoViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView item_recycler_home_name, item_recycler_home_fullname, item_recycler_home_fork, item_recycler_home_star,
                 item_recycler_home_watcher;
         ImageView item_recycler_home_avatar;
@@ -89,6 +91,17 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             item_recycler_home_star = (TextView) itemView.findViewById(R.id.item_recycler_home_star);
             item_recycler_home_watcher = (TextView) itemView.findViewById(R.id.item_recycler_home_watcher);
             item_recycler_home_avatar = (ImageView) itemView.findViewById(R.id.item_recycler_home_avatar);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context, RepoDetailActivity.class);
+            intent.putExtra("avatar",repoSearchModel.getItems().get(getAdapterPosition()-1).getOwner().getAvatar_url());
+            intent.putExtra("description",repoSearchModel.getItems().get(getAdapterPosition()-1).getDescription());
+            intent.putExtra("link",repoSearchModel.getItems().get(getAdapterPosition()-1).getHtml_url());
+            intent.putExtra("name",repoSearchModel.getItems().get(getAdapterPosition()-1).getName());
+            context.startActivity(intent);
         }
     }
 

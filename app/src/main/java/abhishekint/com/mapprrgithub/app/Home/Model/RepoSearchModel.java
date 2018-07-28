@@ -23,6 +23,8 @@ public class RepoSearchModel {
         private String full_name;
         @SerializedName("html_url")
         private String html_url;
+        @SerializedName("description")
+        private String description;
         @SerializedName("owner")
         private InnerOwner owner;
         @SerializedName("forks_count")
@@ -31,6 +33,14 @@ public class RepoSearchModel {
         private Integer watchers_count;
         @SerializedName("stargazers_count")
         private Integer stargazers_count;
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
 
         public String getName() {
             return name;
