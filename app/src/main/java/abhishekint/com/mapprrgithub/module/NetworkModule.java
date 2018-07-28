@@ -2,8 +2,8 @@ package abhishekint.com.mapprrgithub.module;
 
 import javax.inject.Named;
 
-import abhishekint.com.mapprrgithub.app.Home.Interater.RepoSearchClient;
-import abhishekint.com.mapprrgithub.app.Home.Interater.RepoSearchHit;
+import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchClient;
+import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchHit;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;

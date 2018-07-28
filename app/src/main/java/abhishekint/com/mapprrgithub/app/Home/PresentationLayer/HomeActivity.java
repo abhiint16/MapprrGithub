@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import abhishekint.com.mapprrgithub.MapprrGitHubApplication;
 import abhishekint.com.mapprrgithub.R;
-import abhishekint.com.mapprrgithub.app.Home.Interater.RepoSearchHit;
+import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchHit;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenter;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenterImpl;
 import butterknife.BindView;

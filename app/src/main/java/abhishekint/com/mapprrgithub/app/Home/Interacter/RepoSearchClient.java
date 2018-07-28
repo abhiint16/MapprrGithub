@@ -1,4 +1,4 @@
-package abhishekint.com.mapprrgithub.app.Home.Interater;
+package abhishekint.com.mapprrgithub.app.Home.Interacter;
 
 public interface RepoSearchClient {
 }
