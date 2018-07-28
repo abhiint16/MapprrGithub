@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
     }
 
     private void initializeRest() {
-        homeRecyclerAdapter=new HomeRecyclerAdapter(homePresenter);
+        homeRecyclerAdapter=new HomeRecyclerAdapter(homePresenter,this);
         layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(homeRecyclerAdapter);
