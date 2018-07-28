@@ -6,14 +6,14 @@ import java.util.List;
 
 public class RepoSearchModel {
     @SerializedName("items")
-    private List<InnerItem> status;
+    private List<InnerItem> items;
 
-    public List<InnerItem> getStatus() {
-        return status;
+    public List<InnerItem> getItems() {
+        return items;
     }
 
-    public void setStatus(List<InnerItem> status) {
-        this.status = status;
+    public void setItems(List<InnerItem> items) {
+        this.items = items;
     }
 
     public class InnerItem{
