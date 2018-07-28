@@ -7,8 +7,11 @@ import android.app.Application;
  */
 
 public class MapprrGitHubApplication extends Application {
+
+    ComponentInterface componentInterface;
     @Override
     public void onCreate() {
         super.onCreate();
+        componentInterface=DaggerComponentInterface.builder().build();
     }
 }
