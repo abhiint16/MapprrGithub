@@ -12,7 +12,7 @@ import dagger.Provides;
 public class BaseUrlModule {
 
     @Provides
-    @Named("top_head_url")
+    @Named("repo_search_url")
     public String getBaseUrlRepoSearch(Context applicationContext) {
         return applicationContext.getString(R.string.base_url_repo_search);
     }
