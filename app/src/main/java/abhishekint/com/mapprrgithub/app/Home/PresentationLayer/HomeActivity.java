@@ -2,6 +2,7 @@ package abhishekint.com.mapprrgithub.app.Home.PresentationLayer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 
 import abhishekint.com.mapprrgithub.MapprrGitHubApplication;
 import abhishekint.com.mapprrgithub.R;
+import abhishekint.com.mapprrgithub.app.Home.Adapter.HomeRecyclerAdapter;
 import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchHit;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenter;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenterImpl;
@@ -27,6 +29,8 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
 
     Unbinder unbinder;
     HomePresenter homePresenter;
+    RecyclerView.LayoutManager layoutManager;
+    HomeRecyclerAdapter homeRecyclerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,19 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
 
         initializeDaggerAndButter();
         initializePresenter();
+        initializeRest();
+        getHomeFeed();
+    }
+
+    private void getHomeFeed() {
+        homePresenter.getHomeFeed(homeRecyclerAdapter);
+    }
+
+    private void initializeRest() {
+        homeRecyclerAdapter=new HomeRecyclerAdapter(homePresenter);
+        layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(homeRecyclerAdapter);
     }
 
     private void initializePresenter() {
