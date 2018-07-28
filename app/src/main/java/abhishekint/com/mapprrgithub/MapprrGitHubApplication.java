@@ -16,6 +16,12 @@ public class MapprrGitHubApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        componentInterface= DaggerComponentInterface.builder().applicationContextModule(new ApplicationContextModule(this)).build();
+        componentInterface= DaggerComponentInterface.builder()
+                .applicationContextModule(new ApplicationContextModule(this))
+                .build();
+    }
+
+    public ComponentInterface getMapprrAppComponent() {
+        return componentInterface;
     }
 }
