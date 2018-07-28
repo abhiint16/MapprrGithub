@@ -2,5 +2,5 @@
     <string name="app_name">MapprrGitHub</string>
     
     //base urls
-    <string name="base_url_repo_search">https://api.github.com/search/repositories</string>
+    <string name="base_url_repo_search">https://api.github.com/</string>
 </resources>
