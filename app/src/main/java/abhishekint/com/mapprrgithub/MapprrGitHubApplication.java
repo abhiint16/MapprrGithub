@@ -2,6 +2,8 @@ package abhishekint.com.mapprrgithub;
 
 import android.app.Application;
 
+import abhishekint.com.mapprrgithub.component.ComponentInterface;
+import abhishekint.com.mapprrgithub.component.DaggerComponentInterface;
 import abhishekint.com.mapprrgithub.module.ApplicationContextModule;
 
 /**
@@ -14,6 +16,6 @@ public class MapprrGitHubApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        componentInterface=DaggerComponentInterface.builder().applicationContextModule(new ApplicationContextModule(this)).build();
+        componentInterface= DaggerComponentInterface.builder().applicationContextModule(new ApplicationContextModule(this)).build();
     }
 }

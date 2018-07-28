@@ -1,4 +1,4 @@
-package abhishekint.com.mapprrgithub;
+package abhishekint.com.mapprrgithub.component;
 
 
 import abhishekint.com.mapprrgithub.module.ApplicationContextModule;
