@@ -20,6 +20,7 @@ android {
 
 dependencies {
     def supportLibraryVersion='27.1.1'
+    def butterKnifeVersion = '8.7.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
     implementation "com.android.support:design:$supportLibraryVersion"
@@ -33,4 +34,6 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:2.9"
     implementation 'com.squareup.retrofit2:retrofit:2.0.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
 }
