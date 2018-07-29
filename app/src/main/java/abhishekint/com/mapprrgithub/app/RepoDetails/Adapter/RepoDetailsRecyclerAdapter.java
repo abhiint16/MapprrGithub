@@ -19,6 +19,7 @@ import abhishekint.com.mapprrgithub.R;
 import abhishekint.com.mapprrgithub.app.ContributorDetails.PresentationLayer.ContributorDetailsActivity;
 import abhishekint.com.mapprrgithub.app.RepoDetails.Model.ContributorListModel;
 import abhishekint.com.mapprrgithub.app.RepoDetails.Presenter.RepoDetailsPresenter;
+import abhishekint.com.mapprrgithub.app.WebView.WebViewActivity;
 
 public class RepoDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements AdapterRepoDetailsViewLayer{
     RepoDetailsPresenter repoDetailsPresenter;
@@ -126,12 +127,20 @@ public class RepoDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
         notifyDataSetChanged();
     }
 
-    public class ViewHolder0 extends RecyclerView.ViewHolder {
+    public class ViewHolder0 extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView item_repodetails_link_title,item_repodetails_link_desc;
         public ViewHolder0(View itemView) {
             super(itemView);
             item_repodetails_link_title=(TextView)itemView.findViewById(R.id.item_repodetails_link_title);
             item_repodetails_link_desc=(TextView)itemView.findViewById(R.id.item_repodetails_link_desc);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context, WebViewActivity.class);
+            intent.putExtra("link",link);
+            context.startActivity(intent);
         }
     }
 

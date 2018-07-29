@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".app.RepoDetails.PresentationLayer.RepoDetailActivity"></activity>
         <activity android:name=".app.ContributorDetails.PresentationLayer.ContributorDetailsActivity"></activity>
+        <activity android:name=".app.WebView.WebViewActivity"></activity>
     </application>
 
 </manifest>
