@@ -23,6 +23,8 @@ public class RepoSearchModel {
         private String full_name;
         @SerializedName("html_url")
         private String html_url;
+        @SerializedName("contributors_url")
+        private String contributors_url;
         @SerializedName("description")
         private String description;
         @SerializedName("owner")
@@ -33,6 +35,14 @@ public class RepoSearchModel {
         private Integer watchers_count;
         @SerializedName("stargazers_count")
         private Integer stargazers_count;
+
+        public String getContributors_url() {
+            return contributors_url;
+        }
+
+        public void setContributors_url(String contributors_url) {
+            this.contributors_url = contributors_url;
+        }
 
         public String getDescription() {
             return description;

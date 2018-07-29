@@ -1,6 +1,7 @@
 package abhishekint.com.mapprrgithub.app.RepoDetails.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import abhishekint.com.mapprrgithub.R;
+import abhishekint.com.mapprrgithub.app.ContributorDetails.PresentationLayer.ContributorDetailsActivity;
 import abhishekint.com.mapprrgithub.app.RepoDetails.Model.ContributorListModel;
 import abhishekint.com.mapprrgithub.app.RepoDetails.Presenter.RepoDetailsPresenter;
 
@@ -161,13 +163,22 @@ public class RepoDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
 
-    public class ViewHolder4 extends RecyclerView.ViewHolder {
+    public class ViewHolder4 extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView item_repodetails_contributors_name;
         ImageView item_repodetails_contributors_avatar;
         public ViewHolder4(View itemView) {
             super(itemView);
             item_repodetails_contributors_name=(TextView)itemView.findViewById(R.id.item_repodetails_contributors_name);
             item_repodetails_contributors_avatar=(ImageView)itemView.findViewById(R.id.item_repodetails_contributors_avatar);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context, ContributorDetailsActivity.class);
+            intent.putExtra("name",contributorListModel.get(getAdapterPosition()-4).getLogin());
+            intent.putExtra("avatar",contributorListModel.get(getAdapterPosition()-4).getAvatar_url());
+            intent.putExtra("repo_url",contributorListModel.get(getAdapterPosition()-4).getRepos_url());
         }
     }
 
