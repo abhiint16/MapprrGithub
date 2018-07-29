@@ -1,6 +1,7 @@
 package abhishekint.com.mapprrgithub.component;
 
 
+import abhishekint.com.mapprrgithub.app.ContributorDetails.PresentationLayer.ContributorDetailsActivity;
 import abhishekint.com.mapprrgithub.app.Home.PresentationLayer.HomeActivity;
 import abhishekint.com.mapprrgithub.app.RepoDetails.PresentationLayer.RepoDetailActivity;
 import abhishekint.com.mapprrgithub.module.ApplicationContextModule;
@@ -16,4 +17,5 @@ import dagger.Component;
 public interface ComponentInterface {
     void home(HomeActivity homeActivity);
     void repoDetails(RepoDetailActivity repoDetailActivity);
+    void contributorsDetail(ContributorDetailsActivity contributorDetailsActivity);
 }
