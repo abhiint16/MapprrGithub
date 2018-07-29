@@ -34,6 +34,13 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
     HomePresenter homePresenter;
     RecyclerView.LayoutManager layoutManager;
     HomeRecyclerAdapter homeRecyclerAdapter;
+
+    String searchText="google";
+    int page=1;
+    int pageSize=10;
+    String sort="stars";
+    String order="desc";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +49,28 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
         initializeDaggerAndButter();
         initializePresenter();
         initializeRest();
-        getHomeFeed();
+        getHomeFeed(searchText,page,pageSize,sort,order);
+        initSearchView();
     }
 
-    private void getHomeFeed() {
-        homePresenter.getHomeFeed(homeRecyclerAdapter,"google",1,10,"stars","desc");
+    private void initSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchText=query;
+                getHomeFeed(query,page,pageSize,sort,order);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
+    private void getHomeFeed(String query,int page,int pageSize,String sort, String order) {
+        homePresenter.getHomeFeed(homeRecyclerAdapter,query,page,pageSize,sort,order);
     }
 
     private void initializeRest() {
