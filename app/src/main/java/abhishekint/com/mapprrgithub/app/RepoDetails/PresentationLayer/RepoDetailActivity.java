@@ -39,8 +39,9 @@ public class RepoDetailActivity extends AppCompatActivity {
 
     Unbinder unbinder;
     RepoDetailsRecyclerAdapter repoDetailsRecyclerAdapter;
-    RecyclerView.LayoutManager layoutManager;
+    GridLayoutManager layoutManager;
     RepoDetailsPresenter repoDetailsPresenter;
+    String url;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,12 +51,27 @@ public class RepoDetailActivity extends AppCompatActivity {
         initializeDaggerAndButter();
         inflateIntentData();
         initializePresenter();
+        createUrl();
         initializeRest();
     }
 
+    private void createUrl() {
+        this.url="https://api.github.com/repos/"+getIntent().getStringExtra("fullname")+"/contributors";
+
+    }
+
     private void initializeRest() {
-        repoDetailsRecyclerAdapter=new RepoDetailsRecyclerAdapter(repoDetailsPresenter,this);
+        repoDetailsRecyclerAdapter=new RepoDetailsRecyclerAdapter(repoDetailsPresenter,this,url,
+                getIntent().getStringExtra("link"),getIntent().getStringExtra("description"));
         layoutManager=new GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position==0||position==1||position==2||position==3)
+                    return 3;
+                else return 1;
+            }
+        });
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(repoDetailsRecyclerAdapter);
     }
