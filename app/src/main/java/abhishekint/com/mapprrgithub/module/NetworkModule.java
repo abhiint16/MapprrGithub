@@ -2,6 +2,8 @@ package abhishekint.com.mapprrgithub.module;
 
 import javax.inject.Named;
 
+import abhishekint.com.mapprrgithub.app.ContributorDetails.Interacter.ContributorDetailClient;
+import abhishekint.com.mapprrgithub.app.ContributorDetails.Interacter.ContributorDetailHit;
 import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchClient;
 import abhishekint.com.mapprrgithub.app.Home.Interacter.RepoSearchHit;
 import abhishekint.com.mapprrgithub.app.RepoDetails.Interacter.RepoDetailClient;
@@ -24,6 +26,11 @@ public class NetworkModule {
     }
 
     @Provides
+    public ContributorDetailClient providesContributorDetailApiClient(@Named("repo_search_retrofit") Retrofit retrofit) {
+        return retrofit.create(ContributorDetailClient.class);
+    }
+
+    @Provides
     public RepoSearchHit providesRepoSearchFeed(RepoSearchClient repoSearchClient) {
         return new RepoSearchHit(repoSearchClient);
     }
@@ -31,5 +38,10 @@ public class NetworkModule {
     @Provides
     public RepoDetailHit providesRepoDetailFeed(RepoDetailClient repoDetailClient) {
         return new RepoDetailHit(repoDetailClient);
+    }
+
+    @Provides
+    public ContributorDetailHit providesContributorDetailFeed(ContributorDetailClient contributorDetailClient) {
+        return new ContributorDetailHit(contributorDetailClient);
     }
 }

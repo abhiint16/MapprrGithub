@@ -7,6 +7,16 @@ public class ContributorListModel {
     private String avatar_url;
     @SerializedName("login")
     private String login;
+    @SerializedName("repos_url")
+    private String repos_url;
+
+    public String getRepos_url() {
+        return repos_url;
+    }
+
+    public void setRepos_url(String repos_url) {
+        this.repos_url = repos_url;
+    }
 
     public String getAvatar_url() {
         return avatar_url;

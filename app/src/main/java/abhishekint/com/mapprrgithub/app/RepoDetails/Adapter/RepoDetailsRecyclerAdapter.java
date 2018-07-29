@@ -179,6 +179,7 @@ public class RepoDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
             intent.putExtra("name",contributorListModel.get(getAdapterPosition()-4).getLogin());
             intent.putExtra("avatar",contributorListModel.get(getAdapterPosition()-4).getAvatar_url());
             intent.putExtra("repo_url",contributorListModel.get(getAdapterPosition()-4).getRepos_url());
+            context.startActivity(intent);
         }
     }
 
