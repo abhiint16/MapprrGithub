@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import abhishekint.com.mapprrgithub.R;
 import abhishekint.com.mapprrgithub.app.Home.Model.RepoSearchModel;
 import abhishekint.com.mapprrgithub.app.Home.Presenter.HomePresenter;
-import abhishekint.com.mapprrgithub.app.RepoDetails.RepoDetailActivity;
+import abhishekint.com.mapprrgithub.app.RepoDetails.PresentationLayer.RepoDetailActivity;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements AdapterViewLayer {
 
