@@ -51,12 +51,12 @@ public class RepoDetailActivity extends AppCompatActivity {
         initializeDaggerAndButter();
         inflateIntentData();
         initializePresenter();
-        createUrl();
+        getUrl();
         initializeRest();
     }
 
-    private void createUrl() {
-        this.url="https://api.github.com/repos/"+getIntent().getStringExtra("fullname")+"/contributors";
+    private void getUrl() {
+        this.url=getIntent().getStringExtra("contributor_link");
 
     }
 

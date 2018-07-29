@@ -101,7 +101,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             intent.putExtra("description",repoSearchModel.getItems().get(getAdapterPosition()-1).getDescription());
             intent.putExtra("link",repoSearchModel.getItems().get(getAdapterPosition()-1).getHtml_url());
             intent.putExtra("name",repoSearchModel.getItems().get(getAdapterPosition()-1).getName());
-            intent.putExtra("fullname",repoSearchModel.getItems().get(getAdapterPosition()-1).getFull_name());
+            intent.putExtra("contributor_link",repoSearchModel.getItems().get(getAdapterPosition()-1).getContributors_url());
             context.startActivity(intent);
         }
     }
