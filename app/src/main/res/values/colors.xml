@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#c90000</color>
+    <color name="colorPrimaryDark">#800000</color>
+    <color name="colorAccent">#9c0000</color>
 
     <color name="reycler_back">#e2e2e2</color>
+    <color name="common_gray">#bfbfbf</color>
     <color name="white">#fff</color>
+    <color name="red">#c90000</color>
+    <color name="red_dark">#800000</color>
+    <color name="scrim_red">#9c0000</color>
 </resources>

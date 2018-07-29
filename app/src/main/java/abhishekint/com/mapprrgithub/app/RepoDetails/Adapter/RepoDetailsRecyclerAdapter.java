@@ -53,7 +53,7 @@ public class RepoDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
             return new ViewHolder3(view);
         }
         else if (viewType == 5) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_repodetails_contributors_title, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_line, parent, false);
             return new ViewHolder5(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_repodetails_contributor_item, parent, false);
@@ -83,7 +83,7 @@ public class RepoDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerVie
         else if (holder.getItemViewType()==4)
         {
             ((ViewHolder4)holder).item_repodetails_contributors_name.setText(contributorListModel.get(position-4).getLogin());
-            Glide.with(context).load(contributorListModel.get(position-4).getAvatar_url())
+            Glide.with(context).load(contributorListModel.get(position-4).getAvatar_url()).asBitmap()
                     .into(((ViewHolder4)holder).item_repodetails_contributors_avatar);
         }
     }

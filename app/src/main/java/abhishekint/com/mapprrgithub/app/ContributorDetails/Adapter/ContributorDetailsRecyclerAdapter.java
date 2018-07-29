@@ -68,10 +68,8 @@ public class ContributorDetailsRecyclerAdapter extends RecyclerView.Adapter<Recy
             ((ViewHolder2) holder).item_recycler_home_name.setText(innerItems.get(position-1).getName());
             ((ViewHolder2) holder).item_recycler_home_fullname.setText(innerItems.get(position-1).getFull_name());
             ((ViewHolder2) holder).item_recycler_home_watcher.setText("" + innerItems.get(position-1).getWatchers_count());
-            ((ViewHolder2) holder).item_recycler_home_fork.setText("" + innerItems.get(position-1).getForks_count());
-            ((ViewHolder2) holder).item_recycler_home_star.setText("" + innerItems.get(position-1).getStargazers_count());
             Glide.with(context)
-                    .load(innerItems.get(position-1).getOwner().getAvatar_url())
+                    .load(innerItems.get(position-1).getOwner().getAvatar_url()).asBitmap()
                     .into(((ViewHolder2) holder).item_recycler_home_avatar);
         }
     }
@@ -123,15 +121,13 @@ public class ContributorDetailsRecyclerAdapter extends RecyclerView.Adapter<Recy
     }
 
     public class ViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView item_recycler_home_name, item_recycler_home_fullname, item_recycler_home_fork, item_recycler_home_star,
+        TextView item_recycler_home_name, item_recycler_home_fullname,
                 item_recycler_home_watcher;
         ImageView item_recycler_home_avatar;
         public ViewHolder2(View itemView) {
             super(itemView);
             item_recycler_home_name = (TextView) itemView.findViewById(R.id.item_recycler_home_name);
             item_recycler_home_fullname = (TextView) itemView.findViewById(R.id.item_recycler_home_fullname);
-            item_recycler_home_fork = (TextView) itemView.findViewById(R.id.item_recycler_home_fork);
-            item_recycler_home_star = (TextView) itemView.findViewById(R.id.item_recycler_home_star);
             item_recycler_home_watcher = (TextView) itemView.findViewById(R.id.item_recycler_home_watcher);
             item_recycler_home_avatar = (ImageView) itemView.findViewById(R.id.item_recycler_home_avatar);
             itemView.setOnClickListener(this);

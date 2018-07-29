@@ -6,6 +6,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -30,6 +31,8 @@ public class ContributorDetailsActivity extends AppCompatActivity {
     ImageView activity_repodetails_avatar;
     @BindView(R.id.activity_repodetails_collapsingtoolbar)
     CollapsingToolbarLayout activity_repodetails_collapsingtoolbar;
+    @BindView(R.id.activity_repodetails_toolbar)
+    Toolbar toolbar;
     @Inject
     public AppSchedulerProvider appSchedulerProvider;
     @Inject
@@ -52,6 +55,8 @@ public class ContributorDetailsActivity extends AppCompatActivity {
     }
 
     private void initializeRest() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         repoDetailsRecyclerAdapter=new ContributorDetailsRecyclerAdapter(contributorDetailsPresenter,this,getIntent().getStringExtra("repo_url") );
         layoutManager=new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -70,7 +75,7 @@ public class ContributorDetailsActivity extends AppCompatActivity {
     private void inflateIntentData() {
         activity_repodetails_collapsingtoolbar.setTitle(getIntent().getStringExtra("name"));
         Glide.with(this)
-                .load(getIntent().getStringExtra("avatar"))
+                .load(getIntent().getStringExtra("avatar")).asBitmap()
                 .into(activity_repodetails_avatar);
     }
 

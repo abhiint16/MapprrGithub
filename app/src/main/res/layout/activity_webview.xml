@@ -9,19 +9,10 @@
         android:id="@+id/activity_repodetails_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/black"
-        android:titleTextColor="@color/colorAccent"
+        android:background="@color/colorPrimary"
         app:contentInsetStart="0dp"
         app:layout_collapseMode="pin"
         app:layout_scrollFlags="scroll|enterAlways">
-
-        <ImageButton
-            android:id="@+id/activity_repodetails_toolbar_backbtn"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|center_vertical"
-            android:background="@android:color/transparent"
-            android:src="@drawable/back_arrow" />
     </android.support.v7.widget.Toolbar>
 
     <WebView

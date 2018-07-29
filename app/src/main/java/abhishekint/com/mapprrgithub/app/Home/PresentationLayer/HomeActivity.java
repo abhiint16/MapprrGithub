@@ -1,10 +1,13 @@
 package abhishekint.com.mapprrgithub.app.Home.PresentationLayer;
 
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.View;
+import android.widget.ImageButton;
 
 import javax.inject.Inject;
 
@@ -19,12 +22,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class HomeActivity extends AppCompatActivity implements HomeActivityView{
+public class HomeActivity extends AppCompatActivity implements HomeActivityView, View.OnClickListener {
 
     @BindView(R.id.home_recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.home_searchview)
     SearchView searchView;
+    @BindView(R.id.home_filter)
+    ImageButton home_filter;
     @Inject
     RepoSearchHit repoSearchHit;
     @Inject
@@ -51,6 +56,11 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
         initializeRest();
         getHomeFeed(searchText,page,pageSize,sort,order);
         initSearchView();
+        initFilter();
+    }
+
+    private void initFilter() {
+        home_filter.setOnClickListener(this);
     }
 
     private void initSearchView() {
@@ -93,5 +103,10 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView{
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

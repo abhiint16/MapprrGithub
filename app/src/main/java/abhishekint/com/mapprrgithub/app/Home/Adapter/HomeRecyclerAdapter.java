@@ -48,10 +48,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ((HomeRepoViewHolder2) holder).item_recycler_home_name.setText(repoSearchModel.getItems().get(position-1).getName());
             ((HomeRepoViewHolder2) holder).item_recycler_home_fullname.setText(repoSearchModel.getItems().get(position-1).getFull_name());
             ((HomeRepoViewHolder2) holder).item_recycler_home_watcher.setText("" + repoSearchModel.getItems().get(position-1).getWatchers_count());
-            ((HomeRepoViewHolder2) holder).item_recycler_home_fork.setText("" + repoSearchModel.getItems().get(position-1).getForks_count());
-            ((HomeRepoViewHolder2) holder).item_recycler_home_star.setText("" + repoSearchModel.getItems().get(position-1).getStargazers_count());
             Glide.with(context)
-                    .load(repoSearchModel.getItems().get(position-1).getOwner().getAvatar_url())
+                    .load(repoSearchModel.getItems().get(position-1).getOwner().getAvatar_url()).asBitmap()
                     .into(((HomeRepoViewHolder2) holder).item_recycler_home_avatar);
         }
     }
@@ -79,7 +77,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class HomeRepoViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView item_recycler_home_name, item_recycler_home_fullname, item_recycler_home_fork, item_recycler_home_star,
+        public TextView item_recycler_home_name, item_recycler_home_fullname,
                 item_recycler_home_watcher;
         ImageView item_recycler_home_avatar;
 
@@ -87,8 +85,6 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             super(itemView);
             item_recycler_home_name = (TextView) itemView.findViewById(R.id.item_recycler_home_name);
             item_recycler_home_fullname = (TextView) itemView.findViewById(R.id.item_recycler_home_fullname);
-            item_recycler_home_fork = (TextView) itemView.findViewById(R.id.item_recycler_home_fork);
-            item_recycler_home_star = (TextView) itemView.findViewById(R.id.item_recycler_home_star);
             item_recycler_home_watcher = (TextView) itemView.findViewById(R.id.item_recycler_home_watcher);
             item_recycler_home_avatar = (ImageView) itemView.findViewById(R.id.item_recycler_home_avatar);
             itemView.setOnClickListener(this);

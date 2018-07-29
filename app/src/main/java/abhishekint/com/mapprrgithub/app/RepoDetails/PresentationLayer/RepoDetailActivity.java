@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -31,6 +32,8 @@ public class RepoDetailActivity extends AppCompatActivity {
     ImageView activity_repodetails_avatar;
     @BindView(R.id.activity_repodetails_collapsingtoolbar)
     CollapsingToolbarLayout activity_repodetails_collapsingtoolbar;
+    @BindView(R.id.activity_repodetails_toolbar)
+    Toolbar activity_repodetails_toolbar;
     @Inject
     RepoDetailHit repoDetailHit;
     @Inject
@@ -61,6 +64,8 @@ public class RepoDetailActivity extends AppCompatActivity {
     }
 
     private void initializeRest() {
+        setSupportActionBar(activity_repodetails_toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         repoDetailsRecyclerAdapter=new RepoDetailsRecyclerAdapter(repoDetailsPresenter,this,url,
                 getIntent().getStringExtra("link"),getIntent().getStringExtra("description"));
         layoutManager=new GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false);
@@ -83,7 +88,7 @@ public class RepoDetailActivity extends AppCompatActivity {
     private void inflateIntentData() {
         activity_repodetails_collapsingtoolbar.setTitle(getIntent().getStringExtra("name"));
         Glide.with(this)
-                .load(getIntent().getStringExtra("avatar"))
+                .load(getIntent().getStringExtra("avatar")).asBitmap()
                 .into(activity_repodetails_avatar);
     }
 

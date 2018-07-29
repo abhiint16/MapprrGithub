@@ -4,7 +4,9 @@
     android:layout_height="100dp"
     android:orientation="horizontal"
     android:gravity="center"
-    android:elevation="5dp">
+    android:elevation="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
 
     <android.support.v4.widget.ContentLoadingProgressBar
         android:layout_width="wrap_content"

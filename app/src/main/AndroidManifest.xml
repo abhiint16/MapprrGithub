@@ -11,16 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".app.Home.PresentationLayer.HomeActivity">
+        <activity
+            android:name=".app.Home.PresentationLayer.HomeActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.RepoDetails.PresentationLayer.RepoDetailActivity"></activity>
-        <activity android:name=".app.ContributorDetails.PresentationLayer.ContributorDetailsActivity"></activity>
-        <activity android:name=".app.WebView.WebViewActivity"></activity>
+        <activity
+            android:name=".app.RepoDetails.PresentationLayer.RepoDetailActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".app.Home.PresentationLayer.HomeActivity"></activity>
+        <activity
+            android:name=".app.ContributorDetails.PresentationLayer.ContributorDetailsActivity"
+            android:parentActivityName=".app.RepoDetails.PresentationLayer.RepoDetailActivity"></activity>
+        <activity
+            android:name=".app.WebView.WebViewActivity"
+            android:parentActivityName=".app.RepoDetails.PresentationLayer.RepoDetailActivity"></activity>
     </application>
 
 </manifest>
