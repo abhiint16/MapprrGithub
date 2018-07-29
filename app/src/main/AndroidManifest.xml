@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.RepoDetails.PresentationLayer.RepoDetailActivity"></activity>
+        <activity android:name=".app.ContributorDetails.PresentationLayer.ContributorDetailsActivity"></activity>
     </application>
 
 </manifest>
