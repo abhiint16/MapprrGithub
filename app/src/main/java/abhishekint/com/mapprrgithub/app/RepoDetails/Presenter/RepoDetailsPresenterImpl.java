@@ -14,6 +14,6 @@ public class RepoDetailsPresenterImpl implements RepoDetailsPresenter {
 
     @Override
     public void getContributorFeed() {
-        
+
     }
 }

@@ -11,9 +11,15 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import javax.inject.Inject;
+
 import abhishekint.com.mapprrgithub.MapprrGitHubApplication;
 import abhishekint.com.mapprrgithub.R;
 import abhishekint.com.mapprrgithub.app.RepoDetails.Adapter.RepoDetailsRecyclerAdapter;
+import abhishekint.com.mapprrgithub.app.RepoDetails.Interacter.RepoDetailHit;
+import abhishekint.com.mapprrgithub.app.RepoDetails.Presenter.RepoDetailsPresenter;
+import abhishekint.com.mapprrgithub.app.RepoDetails.Presenter.RepoDetailsPresenterImpl;
+import abhishekint.com.mapprrgithub.schedulers.AppSchedulerProvider;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -25,15 +31,22 @@ public class RepoDetailActivity extends AppCompatActivity {
     ImageView activity_repodetails_avatar;
     @BindView(R.id.activity_repodetails_collapsingtoolbar)
     CollapsingToolbarLayout activity_repodetails_collapsingtoolbar;
+    @Inject
+    RepoDetailHit repoDetailHit;
+    @Inject
+    public AppSchedulerProvider appSchedulerProvider;
+
 
     Unbinder unbinder;
     RepoDetailsRecyclerAdapter repoDetailsRecyclerAdapter;
     RecyclerView.LayoutManager layoutManager;
+    RepoDetailsPresenter repoDetailsPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repodetails);
+
         initializeDaggerAndButter();
         inflateIntentData();
         initializePresenter();
@@ -41,13 +54,14 @@ public class RepoDetailActivity extends AppCompatActivity {
     }
 
     private void initializeRest() {
-        repoDetailsRecyclerAdapter=new RepoDetailsRecyclerAdapter(homePresenter,this);
+        repoDetailsRecyclerAdapter=new RepoDetailsRecyclerAdapter(repoDetailsPresenter,this);
         layoutManager=new GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(repoDetailsRecyclerAdapter);
     }
 
     private void initializePresenter() {
+        repoDetailsPresenter=new RepoDetailsPresenterImpl(repoDetailHit,appSchedulerProvider);
     }
 
     private void inflateIntentData() {
@@ -58,6 +72,7 @@ public class RepoDetailActivity extends AppCompatActivity {
     }
 
     private void initializeDaggerAndButter() {
+        ((MapprrGitHubApplication) getApplicationContext()).getMapprrAppComponent().repoDetails(this);
         unbinder = ButterKnife.bind(this);
     }
 
