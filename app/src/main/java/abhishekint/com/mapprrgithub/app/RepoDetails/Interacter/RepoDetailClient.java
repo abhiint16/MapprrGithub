@@ -1,13 +1,14 @@
 package abhishekint.com.mapprrgithub.app.RepoDetails.Interacter;
 
+import java.util.List;
+
 import abhishekint.com.mapprrgithub.app.Home.Model.RepoSearchModel;
+import abhishekint.com.mapprrgithub.app.RepoDetails.Model.ContributorListModel;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 public interface RepoDetailClient {
-    @GET("search/repositories")
-    Observable<RepoSearchModel> getHomeRepoSearch(@Query("q") String search, @Query("page") int page,
-                                                  @Query("per_page") int pageSize, @Query("sort") String sort,
-                                                  @Query("order") String order);
+    @GET
+    Observable<List<ContributorListModel>> getContributorList(@Url String url);
 }

@@ -1,6 +1,9 @@
 package abhishekint.com.mapprrgithub.app.RepoDetails.Interacter;
 
+import java.util.List;
+
 import abhishekint.com.mapprrgithub.app.Home.Model.RepoSearchModel;
+import abhishekint.com.mapprrgithub.app.RepoDetails.Model.ContributorListModel;
 import io.reactivex.Observable;
 
 public class RepoDetailHit {
@@ -11,8 +14,8 @@ public class RepoDetailHit {
         this.repoDetailClient = repoDetailClient;
     }
 
-    public Observable<RepoSearchModel> hitRepoDetail(String q,int page, int pageSize,String sort, String order)
+    public Observable<List<ContributorListModel>> hitContributorList(String url)
     {
-        return repoDetailClient.getHomeRepoSearch(q,page,pageSize,sort,order);
+        return repoDetailClient.getContributorList(url);
     }
 }
