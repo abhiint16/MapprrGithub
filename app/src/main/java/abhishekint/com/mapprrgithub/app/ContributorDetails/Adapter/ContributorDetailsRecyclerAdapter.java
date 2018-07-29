@@ -1,6 +1,7 @@
 package abhishekint.com.mapprrgithub.app.ContributorDetails.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +18,7 @@ import java.util.List;
 import abhishekint.com.mapprrgithub.R;
 import abhishekint.com.mapprrgithub.app.ContributorDetails.Presenter.ContributorDetailsPresenter;
 import abhishekint.com.mapprrgithub.app.Home.Model.RepoSearchModel;
+import abhishekint.com.mapprrgithub.app.RepoDetails.PresentationLayer.RepoDetailActivity;
 
 public class ContributorDetailsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ContributorDetailsAdapterViewLayer{
     ContributorDetailsPresenter contributorDetailsPresenter;
@@ -120,7 +122,7 @@ public class ContributorDetailsRecyclerAdapter extends RecyclerView.Adapter<Recy
         }
     }
 
-    public class ViewHolder2 extends RecyclerView.ViewHolder {
+    public class ViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView item_recycler_home_name, item_recycler_home_fullname, item_recycler_home_fork, item_recycler_home_star,
                 item_recycler_home_watcher;
         ImageView item_recycler_home_avatar;
@@ -132,6 +134,18 @@ public class ContributorDetailsRecyclerAdapter extends RecyclerView.Adapter<Recy
             item_recycler_home_star = (TextView) itemView.findViewById(R.id.item_recycler_home_star);
             item_recycler_home_watcher = (TextView) itemView.findViewById(R.id.item_recycler_home_watcher);
             item_recycler_home_avatar = (ImageView) itemView.findViewById(R.id.item_recycler_home_avatar);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context, RepoDetailActivity.class);
+            intent.putExtra("avatar",innerItems.get(getAdapterPosition()).getOwner().getAvatar_url());
+            intent.putExtra("description",innerItems.get(getAdapterPosition()).getDescription());
+            intent.putExtra("link",innerItems.get(getAdapterPosition()).getHtml_url());
+            intent.putExtra("name",innerItems.get(getAdapterPosition()).getName());
+            intent.putExtra("contributor_link",innerItems.get(getAdapterPosition()).getContributors_url());
+            context.startActivity(intent);
         }
     }
 }
