@@ -14,6 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            app:expandedTitleGravity="bottom|center_horizontal"
+            app:expandedTitleTextAppearance="@style/CollapsingTitle"
             app:contentScrim="@color/colorAccent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -21,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_below="@+id/activity_repodetails_toolbar"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="60dp"
                 android:layout_marginTop="100dp">
 
                 <abhishekint.com.mapprrgithub.util.RoundedImageView

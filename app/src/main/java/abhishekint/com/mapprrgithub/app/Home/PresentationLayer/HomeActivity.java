@@ -84,6 +84,12 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityView,
     }
 
     private void initSearchView() {
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.onActionViewExpanded();
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
